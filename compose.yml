@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8.3.0
+    container_name: bpu
+    environment:
+      MYSQL_DATABASE: 'bpu_data'
+      # So you don't have to use root, but you can if you like
+      MYSQL_USER: ik
+      # You can use whatever password you like
+      MYSQL_PASSWORD: 1q2w3e4r
+      # Password for root access
+      MYSQL_ROOT_PASSWORD: password
+    volumes:
+      - mysql-data:/var/lib/mysql
+    restart: always
+    ports:
+      - "3306:3306"
+
+volumes:
+  mysql-data:
